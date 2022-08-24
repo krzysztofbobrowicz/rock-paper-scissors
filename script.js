@@ -9,6 +9,8 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
+    computerScore++;
+    userScore++;
     return "It's a draw!";
   } else if (playerSelection === 'rock' && computerSelection === 'paper') {
     computerScore++;
@@ -34,7 +36,9 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (let i = 0; i < 5; i++) {
+  while (userScore < 5 && computerScore < 5) {
+    console.log(userScore);
+    console.log(computerScore);
     const computerSelection = getComputerChoice();
     let userPrompt = prompt('What is your choice?');
     console.log(playRound(userPrompt, computerSelection));
